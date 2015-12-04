@@ -8,21 +8,28 @@ class utilisateurTable
     $sql = "select * from jabaianb.utilisateur where identifiant='".$login."' and pass='".sha1($pass)."';" ;
 
     $res = $connection->doQuery( $sql );
-    
-    if($res === false)
-      return false ;
 
     return $res ;
   }
 
   public static function getUserById($id)
   {
+    $connection = new dbconnection() ;
+    $sql = "select * from jabaianb.utilisateur where id = ".$id.";" ;
 
+    $res = $connection->doQuery( $sql );
+
+    return $res ;
   }
 
   public static function getUsers()
   {
+    $connection = new dbconnection() ;
+    $sql = "select * from jabaianb.utilisateur;" ;
 
+    $res = $connection->doQuery( $sql );
+
+    return $res;
   }
 
   public static function inscription($context)

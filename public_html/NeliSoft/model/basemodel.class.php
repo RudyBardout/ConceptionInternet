@@ -3,6 +3,30 @@
 abstract class basemodel
 {
 
+  public function __construct($array = null)
+  {
+    if($array == null)
+    {
+
+    }else
+    {
+      foreach($array as $key => $value)
+      {
+        __set($key, $value);
+      }
+    }
+  }
+
+  public function __set($att, $value)
+  {
+    $this->data[$att] = $value;
+  }
+
+  public function __get($att)
+  {
+    return $this->data[$att];
+  }
+
  public function save()
   {
     $connection = new dbconnection() ;
