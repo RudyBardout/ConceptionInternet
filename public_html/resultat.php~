@@ -1,0 +1,44 @@
+<html>
+<head>
+<title> Inscription </title>
+<meta charset="UTF-8">
+</head>
+<body>
+<!-- Avec la méthode POST, il y a aucun problème de taille, et cela permet de ne pas afficher les données saisie dans le formulaire dans l'URL, et donc augmente grandement la sécurité, notamment les mots de passe -->
+<?php
+if(isset($_FILES['avatar']))
+{ 
+     $dossier = 'public_html/';
+     $fichier = basename($_FILES['avatar']['name']);
+     if(move_uploaded_file($_FILES['avatar']['tmp_name'], $dossier . $fichier)) //Si la fonction renvoie TRUE, c'est que ça a fonctionné...
+     {
+          echo 'Upload effectué avec succès !';
+     }
+     else //Sinon (la fonction renvoie FALSE).
+     {
+          echo 'Echec de l\'upload !';
+     }
+}
+$prenom = $_REQUEST['Prénom'];
+
+if($prenom== '')
+{
+	echo 'Veuillez rentrer un prénom valide '."<br/>\n";
+}
+$nom = $_REQUEST['Nom'];
+
+if($nom== '')
+{
+	echo 'Veuillez rentrer un nom valide'."<br/>\n";
+} 
+if( $prenom!= '' && $nom!= '')
+echo "Bonjour $prenom $nom";
+
+?>
+<br/> 
+<br/>
+<a href="index.html"> Retour au formulaire </a>
+</body>
+</html>
+<!-- La valeur retenu pour nom est celle que l'on a ajouté dans l'url. L'avantage d'utiliser $_REQUEST	est que l'on peut alterner entre post et get, et cela unifie nos données.
+
