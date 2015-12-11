@@ -13,7 +13,19 @@
 	</tr>
 </table>
 <?php
-$listTweets = tweetTable::getPostedbyId($_GET[id]);
+	foreach ($_SESSION["tweets"] as $array) 
+		{
+		echo '<li>';
+			echo "Tweet : ".$array['texte'];
+		echo '</li>';
+		echo '<li>';
+			echo "Date : ".$array['date'];
+		echo '</li>';
+		echo '<li>';
+			echo "Avatar : <img src=/~uapv1403233/img/".$array['image'].">";
+		echo '</li>';
+		}
+echo '</ul>';
 ?>
 <p> Ici sera affiché l'historique des tweets que nous avons postés, et ceux qu'on a liké/retweet </p>
 </html>

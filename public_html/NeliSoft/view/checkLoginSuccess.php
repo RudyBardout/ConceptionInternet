@@ -6,28 +6,28 @@
 	<table>
 		<tr>
 			<td> <a href="monApplication.php?action=listeUtilisateur">Liste utilisateur</td>
-			<td> <a href="monApplication.php?action=menu"> Retour au menu </td>
+			<td> <a href="monApplication.php?action=menuLogIn"> Retour au menu </td>
 		</tr>
 	</table>
 
 <?php
+if ($_SESSION["user"]){
 echo '<ul>';
-foreach( $context->res as $array ){ 
 
 	echo '<li>';
-		echo "Nom : ".$array['nom'];
+		echo "Nom : ".$_SESSION['user']['nom'];
 	echo '</li>';
 	echo '<li>';
-		echo "Prenom : ".$array['prenom'];
+		echo "Prenom : ".$_SESSION['user']['prenom'];
 	echo '</li>';
 	echo '<li>';
-		echo "Identifiant : ".$array['identifiant'];
+		echo "Identifiant : ".$_SESSION['user']['identifiant'];
 	echo '</li>';
 	echo '<li>';
-		echo "Avatar : <img src=/~uapv1403233/img/".$array['avatar'].">";
+		echo "Avatar : <img src=/~uapv1403233/img/".$_SESSION['user']['avatar'].">";
 	echo '</li>';
 
-	foreach ($context->myProfileTweets as $key => $value) 
+	foreach ($_SESSION["tweets"] as $array) 
 		{
 		echo '<li>';
 			echo "Tweet : ".$array['texte'];
@@ -39,9 +39,8 @@ foreach( $context->res as $array ){
 			echo "Avatar : <img src=/~uapv1403233/img/".$array['image'].">";
 		echo '</li>';
 		}
-	}
-} 
 echo '</ul>';
+	}
 ?>
 <form name="tweet" action="monApplication.php?action=checkInscription" method="POST" enctype="multipart/form-data" >
 	<textarea name="tweet" > Status</textarea>

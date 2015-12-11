@@ -1,6 +1,11 @@
+<html>
+
 <?php
-	$list = getUsers();
-	foreach ($list as $value) 
+		echo "<table>";
+
+	foreach ($context->users as $value) 
 	{
-		echo "<a href='monApplication.php?action=getProfile&&id=".$value['id']."'>".$value['identifiant']."</a>";
+		echo "<tr>";
+			echo "<td><a href='monApplication.php?action=getProfile&&id=".$value['id']."'>".$value['identifiant']."</a> \n";
+		echo "</tr>";
 	}

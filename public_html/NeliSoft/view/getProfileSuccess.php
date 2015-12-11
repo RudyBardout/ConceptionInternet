@@ -6,7 +6,17 @@
 	<table>
 		<tr>
 			<td> <a href="monApplication.php?action=listeUtilisateur">Liste utilisateur</td>
-			<td> <a href="monApplication.php?action=menu"> Retour au menu </td>
+			<?php 
+				if(isset($_SESSION['user'])){
+			?>
+			<td> <a href="monApplication.php?action=menuLogIn"> Retour au menu </td>
+			<?php
+				}else{
+			?>
+			<td> <a href="monApplication.php?action=menuLogOut"> Retour au menu </td>
+			<?php
+				}
+			?>
 		</tr>
 	</table>
 <?php
