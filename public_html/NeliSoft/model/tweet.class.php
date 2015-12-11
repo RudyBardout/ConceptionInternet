@@ -1,6 +1,6 @@
 <?php
 
-class tweet
+class tweet extends basemodel
 {
 
 	public static function getPost(){

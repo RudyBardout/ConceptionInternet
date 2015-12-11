@@ -7,7 +7,7 @@ class utilisateurTable
     $connection = new dbconnection() ;
     $sql = "select * from jabaianb.utilisateur where identifiant='".$login."' and pass='".sha1($pass)."';" ;
 
-    $res = $connection->doQuery( $sql );
+    $res = $connection->doQueryObject( $sql, "utilisateur" );
 
     return $res ;
   }
@@ -17,7 +17,7 @@ class utilisateurTable
     $connection = new dbconnection() ;
     $sql = "select * from jabaianb.utilisateur where id = ".$id.";" ;
 
-    $res = $connection->doQuery( $sql );
+    $res = $connection->doQueryObject( $sql, "utilisateur" );
 
     return $res ;
   }
@@ -27,7 +27,7 @@ class utilisateurTable
     $connection = new dbconnection() ;
     $sql = "select * from jabaianb.utilisateur;" ;
 
-    $res = $connection->doQuery( $sql );
+    $res = $connection->doQueryObject( $sql, "utilisateur" );
 
     return $res;
   }
@@ -36,7 +36,7 @@ class utilisateurTable
   {
     $connection = new dbconnection() ;
     $query="Select identifiant from jabaianb.utilisateur where identifiant='".$context->login."';";
-    $res = $connection->doQuery( $query );
+    $res = $connection->doQueryObject( $sql, "utilisateur" );
     if($res === false){
       return false ;
     }

@@ -2,7 +2,7 @@
 
 abstract class basemodel
 {
-
+  public $data;
   public function __construct($array = null)
   {
     if($array == null)
