@@ -63,6 +63,23 @@ class mainController
 		return context::SUCCESS;
 	}
 
+	public static function sendTweet($request,$context)
+	{	
+		tweetTable::addTweet($_SESSION['user']);
+		return context::SUCCESS;
+	}
+
+	public static function updateStatus($request,$context)
+	{
+		utilisateurTable::updateStatus($_SESSION['user']);
+		return context::SUCCESS;
+	}
+
+		public static function tweetList($request,$context)
+	{
+		$context->users = tweetList::getTweets();
+		return context::SUCCESS;
+	}
 	public static function checkInscription($request, $context)
 	{
 		if (isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['login']) && isset($_POST['pass']) && isset($_POST['passConf']) && isset($_FILES['fichier'])) {

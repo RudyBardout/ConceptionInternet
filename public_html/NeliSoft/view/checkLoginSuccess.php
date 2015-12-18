@@ -29,7 +29,7 @@ echo '<ul>';
 
 	foreach ($_SESSION["tweets"] as $array) 
 		{
-		echo '<li>';
+		echo '<li>'; 
 			echo "Tweet : ".$array['texte'];
 		echo '</li>';
 		echo '<li>';
@@ -42,9 +42,12 @@ echo '<ul>';
 echo '</ul>';
 	}
 ?>
-<form name="tweet" action="monApplication.php?action=checkInscription" method="POST" enctype="multipart/form-data" >
-	<textarea name="tweet" > Status</textarea>
-	<textarea name="tweet" maxlength="140"> tweet</textarea>
-	<input type="submit" value="Sauvegarder le statut" /><input type="save" value="save"/></td>
-	<input type="submit" value="Envoyer le tweet" /><input type="reset" value="Reinitialiser"/></td>
+<form name="tweet" action="monApplication.php?action=sendTweet" method="POST" enctype="multipart/form-data" >
+
+	<textarea name="tweet" maxlength="140"> tweet</textarea>	
+	<input type="submit" value="Envoyer le tweet" /><input type="reset" value="Reinitialiser"/>
+</form>
+<form name="status" action="monApplication.php?action=updateStatus" method="POST" enctype="multipart/form-data" >
+	<textarea name="status" > Status</textarea>
+	<input type="submit" value="Sauvegarder le statut" />
 </form>

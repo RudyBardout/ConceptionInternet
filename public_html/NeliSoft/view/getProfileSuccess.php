@@ -41,13 +41,13 @@
 		foreach ($context->profileTweets as $key => $value) 
 		{
 		echo '<li>';
-			echo "Tweet : ".$array['texte'];
+			echo "Tweet : ".$value->data['texte'];
 		echo '</li>';
 		echo '<li>';
-			echo "Date : ".$array['date'];
+			echo "Date : ".$value->data['date'];
 		echo '</li>';
 		echo '<li>';
-			echo "Avatar : <img src=/~uapv1403233/img/".$array['image'].">";
+			echo "Avatar : <img src=/~uapv1403233/img/".$value->data['image'].">";
 		echo '</li>';
 		}
 	}
