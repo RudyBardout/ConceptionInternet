@@ -14,7 +14,11 @@ class postTable
 
 	public static function addPost($user){
 		$connection = new dbconnection();
-		$sql = "INSERT INTO jabaianb.post (texte, date) VALUES ('".$_POST['tweet']."', '".date('Y-m-d H:i:s')."');";
+		$date = date('Y-m-d H:i:s');
+		$sql = "INSERT INTO jabaianb.post (texte, date) VALUES ('".$_POST['tweet']."', '".$date."');";
+		$res = $connection->doQueryObject($sql, "post");
+		
+		$sql = "SELECT id FROM jabaianb.post WHERE texte = '".$_POST['tweet']."' AND date = '".$date."';";
 		$res = $connection->doQueryObject($sql, "post");
 		return $res;
 	}
