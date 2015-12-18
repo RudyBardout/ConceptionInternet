@@ -22,6 +22,6 @@ class postTable
 		$res = $connection->doQueryObject($sql, "post");
 		return $res;
 	}
-
+}
 
 ?>

@@ -32,6 +32,15 @@ class utilisateurTable
     return $res;
   }
 
+  public static function updateStatus($user){
+    $connection = new dbconnection() ;
+    $sql = "UPDATE jabaianb.utilisateur SET statut = '".$_POST['status']."' WHERE id = ".$user->data['id']";";
+
+    $res = $connection->doQueryObject( $sql, "utilisateur" );
+
+    return $res;
+  }
+
   public static function inscription($context)
   {
     $connection = new dbconnection() ;
