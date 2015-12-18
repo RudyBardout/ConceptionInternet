@@ -30,6 +30,24 @@ class tweetTable
 		}
 		return $res;
 	}
+
+	public static function addLike($user){
+		$connection = new dbconnection();
+		$sql = "SELECT * FROM jabainb.vote WHERE message = '".$_GET['id_tweet']."';";
+		$res = $connection->doQuery($sql);
+		$hasLiked = false;
+		foreach($res as $vote){
+			if($vote['utilisateur'] == $user->data['id']) {
+				$hasLiked = true;
+			}
+		}
+		if(!$hasLiked){
+			$sql = "INSERT INTO jabaianb.vote (utilisateur, message) VALUES (".$user->data['id'].", ".$_GET['id_tweet']");";
+			$res = $connection->doQuery($sql);
+			$sql = "UPDATE jabaianb.tweet SET nbvotes = nbvotes+1 WHERE id = ".$_GET['id_tweet'].";";
+			$res = $connection->doQuery($sql);
+		}
+	}
 }
 
 ?>
