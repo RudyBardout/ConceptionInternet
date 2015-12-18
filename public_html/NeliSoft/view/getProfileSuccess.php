@@ -23,19 +23,19 @@
 	foreach( $context->profile as $array )
 	{ 
 		echo '<li>';
-			echo "Nom : ".$array['nom'];
+			echo "Nom : ".$array->data['nom'];
 		echo '</li>';
 		echo '<li>';
-			echo "Prenom : ".$array['prenom'];
+			echo "Prenom : ".$array->data['prenom'];
 		echo '</li>';
 		echo '<li>';
-			echo "Identifiant : ".$array['identifiant'];
+			echo "Identifiant : ".$array->data['identifiant'];
 		echo '</li>';
 		echo '<li>';
-			echo "Avatar : <img src=/~uapv1403233/img/".$array['avatar'].">";
+			echo "Avatar : <img src=/~uapv1403233/img/".$array->data['avatar'].">";
 		echo '</li>';
 		echo '<li>';
-		echo "Status : ".$array['statut'];
+		echo "Status : ".$array->data['statut'];
 		echo '</li>';
 
 		foreach ($context->profileTweets as $key => $value) 

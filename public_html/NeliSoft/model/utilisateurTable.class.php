@@ -36,7 +36,7 @@ class utilisateurTable
   {
     $connection = new dbconnection() ;
     $query="Select identifiant from jabaianb.utilisateur where identifiant='".$context->login."';";
-    $res = $connection->doQueryObject( $sql, "utilisateur" );
+    $res = $connection->doQueryObject( $query, "utilisateur" );
     if($res === false){
       return false ;
     }

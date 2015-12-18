@@ -26,7 +26,7 @@ class mainController
 
 	public static function menuLogIn($request,$context)
 	{
-		$context->listTweets = tweetTable::getTweetsPostedBy($_SESSION['user']['id']);
+		$context->listTweets = tweetTable::getTweetsPostedBy($_SESSION['user']->data['id']);
 		return context::SUCCESS;
 	}
 
@@ -98,7 +98,7 @@ class mainController
 				$context->pass = $_POST['pass'];
 				$context->logged = utilisateurTable::getUserByLoginAndPass($context->login, $context->pass);
 				foreach($context->logged as $yolo){
-					$context->myProfileTweets=tweetTable::getTweetsPostedBy($yolo['id']);
+					$context->myProfileTweets=tweetTable::getTweetsPostedBy($yolo->data['id']);
 					context::setSessionAttribute("user", $yolo);
 					context::setSessionAttribute("tweets", $context->myProfileTweets);
 				}

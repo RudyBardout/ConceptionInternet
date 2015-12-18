@@ -15,16 +15,16 @@ if ($_SESSION["user"]){
 echo '<ul>';
 
 	echo '<li>';
-		echo "Nom : ".$_SESSION['user']['nom'];
+		echo "Nom : ".$_SESSION['user']->data['nom'];
 	echo '</li>';
 	echo '<li>';
-		echo "Prenom : ".$_SESSION['user']['prenom'];
+		echo "Prenom : ".$_SESSION['user']->data['prenom'];
 	echo '</li>';
 	echo '<li>';
-		echo "Identifiant : ".$_SESSION['user']['identifiant'];
+		echo "Identifiant : ".$_SESSION['user']->data['identifiant'];
 	echo '</li>';
 	echo '<li>';
-		echo "Avatar : <img src=/~uapv1403233/img/".$_SESSION['user']['avatar'].">";
+		echo "Avatar : <img src=/~uapv1403233/img/".$_SESSION['user']->data['avatar'].">";
 	echo '</li>';
 
 	foreach ($_SESSION["tweets"] as $array) 
