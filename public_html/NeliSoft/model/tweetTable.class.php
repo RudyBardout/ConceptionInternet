@@ -24,7 +24,7 @@ class tweetTable
 	public static function addTweet($user){
 		$post = postTable::addPost($user);
 		$connection = new dbconnection();
-		$sql = "INSERT INTO jabaianb.tweet ('emetteur', 'parent', 'post', 'nbvotes') VALUES (".$user->data["id"].", ".$user->data["id"].", ".$post->data["id"].", 0);";
+		$sql = "INSERT INTO jabaianb.tweet (emetteur, parent, post, nbvotes) VALUES (".$user->data["id"].", ".$user->data["id"].", ".$post->data["id"].", 0);";
 		$res = $connection->doQueryObject($sql, "tweet");
 		return $res;
 	}
