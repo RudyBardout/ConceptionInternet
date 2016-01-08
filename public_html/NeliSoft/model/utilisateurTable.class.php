@@ -34,10 +34,10 @@ class utilisateurTable
 
   public static function updateStatus($user){
     $connection = new dbconnection() ;
-    $sql = "UPDATE jabaianb.utilisateur SET statut = '".$_POST['status']."' WHERE id = ".$user->data['id']";";
+    $sql = "UPDATE jabaianb.utilisateur SET statut = '".$_POST['status']."' WHERE id = ".$user->data['id'].";";
 
     $res = $connection->doQueryObject( $sql, "utilisateur" );
-
+    
     return $res;
   }
 
@@ -71,6 +71,8 @@ class utilisateurTable
             echo "<img src=/~uapv1403233/img/".$context->nom.$context->prenom.".".$extension_upload." />";
             $query = "INSERT INTO jabaianb.utilisateur (nom, prenom, identifiant, pass, avatar) VALUES ('".$context->nom."', '".$context->prenom."', '".$context->login."', '".$context->pass."', '".$imgPath."');";
             $res = $connection->doExec( $query );
+
+            
             if($res === false){
               echo "Une erreur est survenue !";
             }

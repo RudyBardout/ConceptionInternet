@@ -16,7 +16,6 @@ echo '<ul>';
 
 	echo '<li>';
 		echo "Nom : ".$_SESSION['user']->data['nom'];
-	echo '</li>';
 	echo '<li>';
 		echo "Prenom : ".$_SESSION['user']->data['prenom'];
 	echo '</li>';
@@ -29,15 +28,19 @@ echo '<ul>';
 
 	foreach ($_SESSION["tweets"] as $array) 
 		{
-		echo '<li>'; 
-			echo "Tweet : ".$array['texte'];
+		echo '<br /> <br /> <li>'; 
+			echo "Tweet : ".$array->data['texte'];
 		echo '</li>';
 		echo '<li>';
-			echo "Date : ".$array['date'];
+			echo "Date : ".$array->data['date'];
 		echo '</li>';
-		echo '<li>';
-			echo "Avatar : <img src=/~uapv1403233/img/".$array['image'].">";
-		echo '</li>';
+		
+		if ($array->data['image'] != null) {
+			echo '<li>';
+			echo "Avatar : <img src=/~uapv1403233/img/".$array->data['image'].">";
+			echo '</li>';
+		}
+		
 		}
 echo '</ul>';
 	}
@@ -51,3 +54,4 @@ echo '</ul>';
 	<textarea name="status" > Status</textarea>
 	<input type="submit" value="Sauvegarder le statut" />
 </form>
+</html>

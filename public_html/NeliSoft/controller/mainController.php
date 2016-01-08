@@ -95,8 +95,15 @@ class mainController
 				return context::ERROR;
 			}
 			else {
+				$context->clearPass = $context->pass;
 				$context->pass=sha1($context->pass);
 				utilisateurTable::inscription($context);
+				$context->logged = utilisateurTable::getUserByLoginAndPass($context->login, $context->clearPass);
+		        foreach($context->logged as $yolo){
+		          $context->myProfileTweets=tweetTable::getTweetsPostedBy($yolo->data['id']);
+		          context::setSessionAttribute("user", $yolo);
+		          context::setSessionAttribute("tweets", $context->myProfileTweets);
+				}
 			}
 		}
 		else {
@@ -127,6 +134,9 @@ class mainController
 			if (count($context->logged) < 1) {
 				return context::ERROR;
 			}
+		}else{
+				$context->myProfileTweets=tweetTable::getTweetsPostedBy($_SESSION['user']->data['id']);
+				$_SESSION["tweets"] = $context->myProfileTweets;
 		}
 		
 		return context::SUCCESS;
@@ -144,6 +154,10 @@ class mainController
 		}
 		return context::SUCCESS;	
 	}
-}
+public static function retweet($request, $context)
+{
+	$context->tweet=tweetTable::retweet($_GET['id_tweet']);
+	return context::SUCCESS;	
 
-	
+}
+}

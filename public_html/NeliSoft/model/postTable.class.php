@@ -12,7 +12,7 @@ class postTable
 		return $res;
 	}
 
-	public static function addPost($user){
+	public static function addPost(){
 		$connection = new dbconnection();
 		$date = date('Y-m-d H:i:s');
 		$sql = "INSERT INTO jabaianb.post (texte, date) VALUES ('".$_POST['tweet']."', '".$date."');";
@@ -23,5 +23,4 @@ class postTable
 		return $res;
 	}
 }
-
 ?>

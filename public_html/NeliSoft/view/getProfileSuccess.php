@@ -38,17 +38,23 @@
 		echo "Status : ".$array->data['statut'];
 		echo '</li>';
 
-		foreach ($context->profileTweets as $key => $value) 
+		foreach ($context->profileTweets as $value) 
 		{
-		echo '<li>';
-			echo "Tweet : ".$value->data['texte'];
-		echo '</li>';
-		echo '<li>';
-			echo "Date : ".$value->data['date'];
-		echo '</li>';
-		echo '<li>';
-			echo "Avatar : <img src=/~uapv1403233/img/".$value->data['image'].">";
-		echo '</li>';
+			echo '<br /> <br <li>';
+				echo "Tweet : ".$value->data['texte'];
+			echo '</li>';
+			echo '<li>';
+				echo "Date : ".$value->data['date'];
+			echo '</li>';
+			echo "<a href='monApplication.php?action=retweet&&id_tweet=".$value->data['id']."'>
+					<input type='submit' value='Retweet'/>
+				</a>";
+
+			if ($value->data['image'] != null) {
+				echo '<li>';
+				echo "Avatar : <img src=/~uapv1403233/img/".$value->data['image'].">";
+				echo '</li>';
+		}
 		}
 	}
 ?>

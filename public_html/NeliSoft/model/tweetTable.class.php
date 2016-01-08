@@ -14,7 +14,7 @@ class tweetTable
 
 	public static function getTweetsPostedBy($id_user){
 		$connection = new dbconnection() ;
-	    $sql = "SELECT * FROM jabaianb.post p JOIN jabaianb.tweet t ON p.id = t.post WHERE t.emetteur=".$id_user.";";
+	    $sql = "SELECT * FROM jabaianb.post p JOIN jabaianb.tweet t ON p.id = t.post WHERE t.emetteur=".$id_user." OR t.parent=".$id_user.";";
 
 	    $res = $connection->doQueryObject( $sql, "tweet" );
 
@@ -30,6 +30,12 @@ class tweetTable
 		}
 		return $res;
 	}
-}
+	public static function retweet($user){
+		$connection = new dbconnection();
+		$sql = "UPDATE jabaianb.tweet SET emetteur= '".$_SESSION['user']->data['id']."' WHERE id = ".$_GET['id_tweet'].";";
+		$res = $connection->doQueryObject($sql, "tweet");
+		return $res;
 
+	}
+}
 ?>
