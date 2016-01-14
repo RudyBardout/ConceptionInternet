@@ -1,31 +1,34 @@
 <html>
+<head>
+<link rel="stylesheet" type="text/css" href="/~uapv1403233/css/style.css" media="all"/>
 <body>
 	<h1> Twitter </h1>
-
-<table>
-	<tr>
-		<td> <a href="monApplication.php?action=listeUtilisateur">Liste utilisateur</a></td>
-		<td>                             </td>
-		<td> <a href="monApplication.php?action=checkLogin"> Mon profil </a></td>
-		<form name="logout" action="monApplication.php?action=logOut" method="POST" enctype="multipart/form-data" >
-			<td> <input type="submit" value="se deconnecter"> </td>
-		</form>
-	</tr>
-</table>
+<div id="menu">
+<nav>
+	<ul>
+		<li> <a href="monApplication.php?action=listeUtilisateur">Liste utilisateur</a></li>
+		<li>                             </li>
+		<li> <a href="monApplication.php?action=checkLogin"> Mon profil </a></li>
+		<li><form name="logout" action="monApplication.php?action=logOut" method="POST" enctype="multipart/form-data" ></li>
+			<li> <input type="submit" value="se deconnecter"> </li>
+		</ul>
+	</nav>
+</div>
+<div id="list_tweets">
 <?php
 	foreach ($_SESSION["tweets"] as $array) 
 		{
 		echo '<li>';
-			echo "Tweet : ".$array['texte'];
+			echo "Tweet : ".$array->data['texte'];
 		echo '</li>';
 		echo '<li>';
-			echo "Date : ".$array['date'];
+			echo "Date : ".$array->data['date'];
 		echo '</li>';
 		echo '<li>';
-			echo "Avatar : <img src=/~uapv1403233/img/".$array['image'].">";
+			echo "Avatar : <img src=/~uapv1403233/img/".$array->data['image'].">";
 		echo '</li>';
 		}
 echo '</ul>';
 ?>
-<p> Ici sera affiché l'historique des tweets que nous avons postés, et ceux qu'on a liké/retweet </p>
+</div>
 </html>

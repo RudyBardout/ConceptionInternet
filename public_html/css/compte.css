@@ -1,0 +1,21 @@
+body {
+    background-color: #d0e4fe;
+}
+
+tr {
+	display: inline-block;
+	background-color:  #ffffff;
+}
+
+td {
+	padding-right: 10px;
+}
+
+ul {
+list-style-type: none;
+}
+
+textarea {
+	width: 50%;
+        height: 5em;
+}

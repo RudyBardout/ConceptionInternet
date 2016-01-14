@@ -1,7 +1,7 @@
 <html>
 <body>
 	<h1> Twitter </h1>
-
+<div id="toolbar"></div>
 <table>
 	<tr>
 		<td> <a href="monApplication.php?action=listeUtilisateur">Liste utilisateur</a></td>

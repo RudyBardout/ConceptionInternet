@@ -10,7 +10,7 @@
   </head>
 
   <body>
-    <h2>Super c'est ton appli ! </h2>
+    <h2> </h2>
       <?php include($template_view); ?>
     
   </body>

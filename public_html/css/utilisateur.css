@@ -1,0 +1,26 @@
+body {
+    background:url("../interface_big_fond.jpg");
+}
+#Barre {
+	display: block;
+	text-align: center;
+
+}
+#userlist a {
+	display: block;
+	text-align: center;
+	padding-bottom: 2px;
+}
+a {
+	text-align: center;
+	text-decoration:none;
+	color: black;
+}
+table { 
+	width: 100%;
+	border-spacing: 0px;
+	}
+
+	nav {
+		display: block;
+	}
