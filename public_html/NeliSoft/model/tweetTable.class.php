@@ -21,6 +21,16 @@ class tweetTable
 	    return $res;
 	}
 
+	public static function removeTweet($tweet){
+		$connection = new dbconnection();
+		$sql = "DELETE FROM jabaianb.vote WHERE message = ".$tweet->data['id'].";";
+		$connection->doExec($sql);
+		$sql = "DELETE FROM jabaianb.tweet WHERE id = ".$tweet->data['id'].";";
+		$connection->doExec($sql);
+		$sql = "DELETE FROM jabaianb.post WHERE id = ".$tweet->data['post'].";";
+		$connection->doExec($sql);
+	}
+
 	public static function addTweet($user){
 		$posts = postTable::addPost($user);
 		$connection = new dbconnection();

@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 class utilisateurTable
 {
@@ -44,6 +44,7 @@ class utilisateurTable
   public static function inscription($context)
   {
     $connection = new dbconnection() ;
+    var_dump($connection);
     $query="Select identifiant from jabaianb.utilisateur where identifiant='".$context->login."';";
     $res = $connection->doQueryObject( $query, "utilisateur" );
     if($res === false){
@@ -70,6 +71,7 @@ class utilisateurTable
             chmod('/home/etudiants/inf/uapv1403233/public_html/img/'.$_POST["nom"].$_POST["prenom"].".".$extension_upload , 0755);
             echo "<img src=/~uapv1403233/img/".$context->nom.$context->prenom.".".$extension_upload." />";
             $query = "INSERT INTO jabaianb.utilisateur (nom, prenom, identifiant, pass, avatar) VALUES ('".$context->nom."', '".$context->prenom."', '".$context->login."', '".$context->pass."', '".$imgPath."');";
+            var_dump($query);
             $res = $connection->doExec( $query );
 
             

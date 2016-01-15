@@ -37,6 +37,14 @@ echo "<div id = 'list_tweets'>";
 		echo '<li>';
 			echo "Date : ".$array->data['date'];
 		echo '</li>';
+		echo '<li>';
+			echo "Nombre de votes : ".$array->data['nbvotes'];
+		echo '</li>';
+		if($array->data['parent'] == $_SESSION['user']->data['id']){
+			echo "<a href='monApplication.php?action=deleteTweet&&tweetToDelete=".$array->data['id']."'>
+					<input type='submit' value='Supprimer'/>
+				</a>";
+		}
 		
 		if ($array->data['image'] != null) {
 			echo '<li>';

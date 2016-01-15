@@ -49,6 +49,24 @@
 			echo "<a href='monApplication.php?action=retweet&&id_tweet=".$value->data['id']."'>
 					<input type='submit' value='Retweet'/>
 				</a>";
+			echo '<li>';
+				echo "Nombre de votes : ".$value->data['nbvotes'];
+			echo '</li>';
+			$hasVoted = false;
+			foreach($context->votes as $vote){
+				if($vote->data['message'] == $value->data['id'] && $vote->data['utilisateur'] == $_SESSION['user']->data['id']){
+					$hasVoted = true;
+				}
+			}
+			if($hasVoted){
+				echo "<a href='monApplication.php?action=unVote&&id_tweet=".$value->data['id']."'>
+					<input type='submit' value='Unvote'/>
+				</a>";
+			} else{
+				echo "<a href='monApplication.php?action=vote&&id_tweet=".$value->data['id']."'>
+					<input type='submit' value='Vote'/>
+				</a>";
+			}
 
 			if ($value->data['image'] != null) {
 				echo '<li>';

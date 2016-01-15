@@ -6,12 +6,6 @@
 class mainController
 {
 
-	public static function helloWorld($request,$context)
-	{
-		$context->mavariable="hello world";
-		return context::SUCCESS;
-	}
-
 	public static function index($request,$context)
 	{
 		
@@ -48,14 +42,6 @@ class mainController
 		return context::SUCCESS;
 	}
 
-	public static function superTest($request, $context)
-	{
-		$context->mavariable1=$_GET['param1'];
-		$context->mavariable2=$_GET['param2'];
-
-		return context::SUCCESS;
-	}
-
 	public static function logOut($request,$context)
 	{	
 		session_unset();
@@ -66,6 +52,16 @@ class mainController
 	public static function sendTweet($request,$context)
 	{	
 		tweetTable::addTweet($_SESSION['user']);
+		return context::SUCCESS;
+	}
+
+	public static function deleteTweet($request, $context){
+		$tweets = tweetTable::getTweetsPostedBy($_SESSION['user']->data['id']);
+		foreach($tweets as $tweet){
+			if($tweet->data['id'] == $_GET['tweetToDelete'] && $tweet->data['parent'] == $_SESSION['user']->data['id']){
+				tweetTable::removeTweet($tweet);
+			}
+		}
 		return context::SUCCESS;
 	}
 
@@ -141,12 +137,14 @@ class mainController
 		
 		return context::SUCCESS;
 	}
+
 	public static function getProfile($request, $context)
 	{
 		if(isset($_GET['id']))
 		{
 			$context->profile=utilisateurTable::getUserById($_GET['id']);
 			$context->profileTweets=tweetTable::getTweetsPostedBy($_GET['id']);
+			$context->votes=voteTable::getVotes();
 		}
 		else {
 			$context->erreur = 2;
@@ -154,10 +152,21 @@ class mainController
 		}
 		return context::SUCCESS;	
 	}
-public static function retweet($request, $context)
-{
-	$context->tweet=tweetTable::retweet($_GET['id_tweet']);
-	return context::SUCCESS;	
 
-}
+	public static function vote($request, $context){
+		voteTable::addVote($_SESSION['user']->data['id'], $_GET['id_tweet']);
+		return context::SUCCESS;
+	}
+
+	public static function unVote($request, $context){
+		voteTable::removeVote($_SESSION['user']->data['id'], $_GET['id_tweet']);
+		return context::SUCCESS;
+	}
+
+	public static function retweet($request, $context)
+	{
+		$context->tweet=tweetTable::retweet($_GET['id_tweet']);
+		return context::SUCCESS;	
+
+	}
 }
